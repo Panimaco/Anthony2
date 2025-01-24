@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KeepPanelButton : MonoBehaviour
+/*public class KeepPanelButton : MonoBehaviour
 {
     //Id del panel que se muestra
     public string PanelId;
@@ -20,4 +20,4 @@ public class KeepPanelButton : MonoBehaviour
     {
         _panelManager.ShowPanel(PanelId, Behaviour);
     }
-}
+}*/

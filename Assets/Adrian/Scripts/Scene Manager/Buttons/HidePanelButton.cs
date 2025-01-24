@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HidePanelButton : MonoBehaviour
+/*public class HidePanelButton : MonoBehaviour
 {
     private PanelManager _panelManager;
 
@@ -15,4 +15,4 @@ public class HidePanelButton : MonoBehaviour
     {
         _panelManager.HideLastPanel();
     }
-}
+}*/

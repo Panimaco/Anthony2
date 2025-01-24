@@ -6,6 +6,6 @@ public class PanelInstanceModel : MonoBehaviour
 {
     public string PanelId;
 
-    public GameObject PanelIntance;
+    public GameObject PanelInstance;
 }
     

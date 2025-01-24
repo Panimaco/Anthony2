@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
         float vertical = Input.GetAxis("Vertical");
         _shootDirection = new Vector2(Mathf.Round(horizontal), Mathf.Round(vertical)).normalized;
 
-        if (Input.GetKeyDown("Shoot"))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             Shoot();
         }

@@ -8,3 +8,4 @@ public class PanelInstanceModel : MonoBehaviour
 
     public GameObject PanelIntance;
 }
+    

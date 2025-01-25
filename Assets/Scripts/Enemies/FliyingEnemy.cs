@@ -4,28 +4,32 @@ using System;
 public class FlyingEnemy : MonoBehaviour
 {
     [SerializeField]
-    private float _moveDistance = 2f; // Distancia que se mueve cada vez.
+    private float _moveDistance = 2f;
 
     [SerializeField]
-    private float _moveSpeed = 3f; // Velocidad de movimiento.
+    private float _moveSpeed = 3f;
 
     [SerializeField]
-    private float _destroyDistance = 20f; // Distancia desde la cámara para destruir.
+    private float _destroyDistance = 20f;
 
     [SerializeField]
-    private GameObject _projectilePrefab; // Prefab del proyectil.
+    private GameObject _projectilePrefab;
 
     [SerializeField]
-    private Transform _shootPoint; // Punto desde donde se spawnea el proyectil.
+    private Transform _shootPoint;
 
     [SerializeField]
-    private float _projectileSpeed = 5f; // Velocidad del proyectil.
+    private float _projectileSpeed = 5f;
 
-    public Action OnDestroyed; // Evento para notificar cuando el enemigo se destruya.
+    public Action OnDestroyed;
 
-    private Transform _player; // Referencia al jugador.
-    private bool _isMoving = false; // Estado interno de movimiento.
-
+    public Transform _player;
+    private bool _isMoving = false;
+    public void Start()
+    {
+        //_player = GameObject.FindWithTag("Player").transform;
+        StartNextMove();
+    }
     private void Update()
     {
         // Destruir si está fuera del rango permitido.
@@ -33,12 +37,6 @@ public class FlyingEnemy : MonoBehaviour
         {
             DestroyEnemy();
         }
-    }
-
-    public void Initialize(Transform player)
-    {
-        _player = player; // Asignar referencia al jugador.
-        StartNextMove(); // Iniciar el primer movimiento.
     }
 
     private void StartNextMove()

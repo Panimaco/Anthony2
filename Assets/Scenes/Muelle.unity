@@ -1158,6 +1158,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OctoAnthony
       objectReference: {fileID: 0}
+    - target: {fileID: 7574641805267465632, guid: d5fdfb5c9f9f8a64ba4ffd14eeac1406, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1335,6 +1339,14 @@ PrefabInstance:
     - target: {fileID: 4684457664021068034, guid: 0ad01f4d7a2c6364ea4f1e81b918ce25, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5812741583589303863, guid: 0ad01f4d7a2c6364ea4f1e81b918ce25, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 1635260590}
+    - target: {fileID: 5812741583589303863, guid: 0ad01f4d7a2c6364ea4f1e81b918ce25, type: 3}
+      propertyPath: _moveDistance
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

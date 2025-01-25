@@ -7,14 +7,15 @@ public class Proyectile : MonoBehaviour
     //Zona de Variables Globales
     [Header("Referencias")]
     public float Speed = 20f;
-    public float LifeTime = 2f;
+    public float LifeTime = 5f;
     public Vector2 Direction;
 
     [SerializeField]
-    private float _timeToDestroy = 0.1f;
+    private float _timeToDestroy = 2f;
 
     private Animator _anim;
     private Rigidbody2D _rb;
+
     // Start is called before the first frame update
     void Start()
     {

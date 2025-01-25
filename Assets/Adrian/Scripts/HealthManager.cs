@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class HealthManager : MonoBehaviour
 {
+    /*[SerializeField]
+    SceneManager sceneManager;*/
     //Array de sprites de la barra de salud
     public Sprite[] health;
     //Imagen de la barra de salud

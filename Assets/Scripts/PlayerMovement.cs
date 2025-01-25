@@ -105,17 +105,14 @@ public class PlayerMovement : MonoBehaviour
     private void CheckGround()
     {
         _isOnGround = Physics2D.OverlapCircle(_groundCheck.position, _groundCheckRadius, _groundLayer);
-        if(_isOnGround)
-        {
-            _anim.SetBool("isOnGround", false);
-        }
+        _anim.SetBool("isOnGround", _isOnGround);
     }
+
     private void OnDrawGizmos()
     {
         if (_groundCheck != null)
         {
             Gizmos.color = Color.red;
-
             Gizmos.DrawWireSphere(_groundCheck.position, _groundCheckRadius);
         }
     }

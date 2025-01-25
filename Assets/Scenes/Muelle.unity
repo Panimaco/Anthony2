@@ -400,6 +400,7 @@ GameObject:
   - component: {fileID: 478499256}
   - component: {fileID: 478499258}
   - component: {fileID: 478499257}
+  - component: {fileID: 478499259}
   m_Layer: 5
   m_Name: GameHud
   m_TagString: Untagged
@@ -466,6 +467,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 478499255}
   m_CullTransparentMesh: 1
+--- !u!114 &478499259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478499255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 023dd527f38e3ad45b4b4aa497faeaa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health:
+  - {fileID: 1987659049, guid: e71a38b552eacf548838ff38660cedc1, type: 3}
+  - {fileID: -1205670459, guid: e71a38b552eacf548838ff38660cedc1, type: 3}
+  - {fileID: -1796633914, guid: e71a38b552eacf548838ff38660cedc1, type: 3}
+  - {fileID: -929347533, guid: e71a38b552eacf548838ff38660cedc1, type: 3}
+  - {fileID: -1089603745, guid: e71a38b552eacf548838ff38660cedc1, type: 3}
+  healthBar: {fileID: 830664661}
 --- !u!1 &526774169
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,8 +552,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -725, y: 440}
-  m_SizeDelta: {x: -1550, y: -920}
+  m_AnchoredPosition: {x: -644.5, y: 448}
+  m_SizeDelta: {x: -1289, y: -896}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &830664661
 MonoBehaviour:
@@ -548,15 +568,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -1089603745, guid: e71a38b552eacf548838ff38660cedc1, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

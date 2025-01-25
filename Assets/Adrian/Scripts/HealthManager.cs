@@ -56,10 +56,10 @@ public class HealthManager : MonoBehaviour
         life--;
         PlayerPrefs.SetInt("Vidas", life);
         PlayerPrefs.Save();
-        if (life == 0)
+        if (life > 0)
         {
-            //GameOver();
-            //ResetGame();
+            PlayerPrefs.SetInt("Salud", 4);
+            PlayerPrefs.Save();
         }
     }
 }

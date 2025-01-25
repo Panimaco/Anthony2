@@ -5,10 +5,13 @@ using UnityEngine;
 public class ColisionManager : MonoBehaviour
 {
     [SerializeField]
+    //Manager de salud y vida
     HealthManager healthManager;
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    //Función de colisión con enemigos
+    public void OnTriggerEnter2D(Collider2D collision)
     {
+        //Compara tag de Enemigo
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Debug.Log("Tan dado");

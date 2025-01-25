@@ -17,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
     private GameObject _proyectilePrefab;
     [SerializeField]
     private Transform _shootPoint;
+    [SerializeField]
+    private float _cadence;
 
     [Header("Variables para Detection del Suelo")]
     [SerializeField]
@@ -28,12 +30,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float _groundCheckRadius = 0.2f;
 
+    private bool _canShoot = true;
+
     // Start is called before the first frame update
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -49,28 +52,32 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            Shoot();
+            StartCoroutine(Shoot());
         }
     }
 
-    private void Shoot()
+    
+    IEnumerator Shoot()
     {
-        Vector2 recoilDirection = -_shootDirection;
+        if (!_canShoot) yield break; // Salimos si ya estamos disparando.
+        _canShoot = false;
 
-        if (_isOnGround)
-        {
-            if(_shootDirection == Vector2.down || (_shootDirection.x != 0 && _shootDirection.y < 0))
-            {
-                _rb.AddForce(recoilDirection * _recoilForce, ForceMode2D.Impulse);
-            }
-        }
-        if(_proyectilePrefab != null && _shootPoint != null)
-        {
-            GameObject proyectile = Instantiate(_proyectilePrefab, _shootPoint.position, Quaternion.identity);
+        Vector2 recoilDirection = -_shootDirection.normalized;
 
-            proyectile.GetComponent<Proyectile>().Direction = _shootDirection;
+        if (_isOnGround && (_shootDirection == Vector2.down || (_shootDirection.x != 0 && _shootDirection.y < 0)))
+        {
+            _rb.AddForce(recoilDirection * _recoilForce, ForceMode2D.Impulse);
         }
+
+        GameObject projectile = Instantiate(_proyectilePrefab, _shootPoint.position, Quaternion.identity);
+        projectile.GetComponent<Proyectile>().Direction = _shootDirection;
+
+        yield return new WaitForSeconds(_cadence); // Tiempo de espera.
+
+        _canShoot = true; // Permitir disparar de nuevo.
     }
+
+
     private void CheckGround()
     {
         _isOnGround = Physics2D.OverlapCircle(_groundCheck.position, _groundCheckRadius, _groundLayer);

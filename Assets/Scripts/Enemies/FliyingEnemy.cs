@@ -23,11 +23,14 @@ public class FlyingEnemy : MonoBehaviour
 
     public Action OnDestroyed;
 
-    public Transform _player;
+    private Transform _player;
     private bool _isMoving = false;
+    public void Initialize(Transform player)
+    {
+        _player = player; // Asignamos el jugador como referencia.
+    }
     public void Start()
     {
-        //_player = GameObject.FindWithTag("Player").transform;
         StartNextMove();
     }
     private void Update()

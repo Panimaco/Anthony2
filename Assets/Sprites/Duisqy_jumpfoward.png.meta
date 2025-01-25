@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e9b598466bc4f21458e5bc32027334ed
+guid: 3bb38ff017e4e7641bbd80913a73f292
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Duisqy_fall_0
+      name: Duisqy_jumpfoward_0
       rect:
         serializedVersion: 2
         x: 0
@@ -111,14 +111,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c87098515aaa9448975d73fb9a4c8b2
-      internalID: 1557801223
+      spriteID: 8359fe419ac7fab478d3f02e25e7e0b4
+      internalID: -2084255456
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Duisqy_fall_1
+      name: Duisqy_jumpfoward_1
       rect:
         serializedVersion: 2
         x: 45
@@ -132,14 +132,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2097b22c5ae4e4240986a3df9b58a566
-      internalID: 613689214
+      spriteID: 795bf73e74893fe4e8c9652f61c93e29
+      internalID: 444513628
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Duisqy_fall_2
+      name: Duisqy_jumpfoward_2
       rect:
         serializedVersion: 2
         x: 90
@@ -153,14 +153,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a9ecde712866b624eaf8ad82cfd3acd5
-      internalID: 866702938
+      spriteID: 0e6ce334a08c593479582b41cf31da3b
+      internalID: 1549806605
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Duisqy_fall_3
+      name: Duisqy_jumpfoward_3
       rect:
         serializedVersion: 2
         x: 135
@@ -174,14 +174,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 353d3eceea9292e4799d02e79689afae
-      internalID: 1597433923
+      spriteID: 263933d80ed00064998cc9a83a4e85b4
+      internalID: 472412524
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Duisqy_fall_4
+      name: Duisqy_jumpfoward_4
       rect:
         serializedVersion: 2
         x: 180
@@ -195,8 +195,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d7559f05b111e6340b94cbea77fc839b
-      internalID: -1493223147
+      spriteID: dfe76f29615747241a1586c4f33b30f1
+      internalID: -1159549051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Duisqy_jumpfoward_5
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 0
+        width: 45
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f154e23a8418de4ab94af358d142e58
+      internalID: 885266021
       vertices: []
       indices: 
       edges: []
@@ -212,11 +233,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Duisqy_fall_0: 1557801223
-      Duisqy_fall_1: 613689214
-      Duisqy_fall_2: 866702938
-      Duisqy_fall_3: 1597433923
-      Duisqy_fall_4: -1493223147
+      Duisqy_jumpfoward_0: -2084255456
+      Duisqy_jumpfoward_1: 444513628
+      Duisqy_jumpfoward_2: 1549806605
+      Duisqy_jumpfoward_3: 472412524
+      Duisqy_jumpfoward_4: -1159549051
+      Duisqy_jumpfoward_5: 885266021
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

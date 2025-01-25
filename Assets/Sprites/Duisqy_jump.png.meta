@@ -100,10 +100,10 @@ TextureImporter:
       name: Duisqy_jump_0
       rect:
         serializedVersion: 2
-        x: 3
-        y: 15
-        width: 38
-        height: 26
+        x: 0
+        y: 0
+        width: 45
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,10 +121,10 @@ TextureImporter:
       name: Duisqy_jump_1
       rect:
         serializedVersion: 2
-        x: 48
-        y: 14
-        width: 36
-        height: 31
+        x: 45
+        y: 0
+        width: 45
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -142,10 +142,10 @@ TextureImporter:
       name: Duisqy_jump_2
       rect:
         serializedVersion: 2
-        x: 95
-        y: 8
-        width: 31
-        height: 38
+        x: 90
+        y: 0
+        width: 45
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,10 +163,10 @@ TextureImporter:
       name: Duisqy_jump_3
       rect:
         serializedVersion: 2
-        x: 142
-        y: 8
-        width: 29
-        height: 38
+        x: 135
+        y: 0
+        width: 45
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

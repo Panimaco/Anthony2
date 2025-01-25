@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e9b598466bc4f21458e5bc32027334ed
+guid: d2273ae1bafbff841a992f2f72c6bbf2
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Duisqy_fall_0
+      name: Duisqy_death_0
       rect:
         serializedVersion: 2
         x: 0
@@ -111,14 +111,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c87098515aaa9448975d73fb9a4c8b2
-      internalID: 1557801223
+      spriteID: 6d09b1f9970eba145a567d70823951fc
+      internalID: -753436946
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Duisqy_fall_1
+      name: Duisqy_death_1
       rect:
         serializedVersion: 2
         x: 45
@@ -132,14 +132,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2097b22c5ae4e4240986a3df9b58a566
-      internalID: 613689214
+      spriteID: 74f3a28e9712b394c8ded162f1be01f5
+      internalID: 1627587553
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Duisqy_fall_2
+      name: Duisqy_death_2
       rect:
         serializedVersion: 2
         x: 90
@@ -153,14 +153,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a9ecde712866b624eaf8ad82cfd3acd5
-      internalID: 866702938
+      spriteID: 497393606bb36ff42aa518b3c78ec587
+      internalID: -401316748
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Duisqy_fall_3
+      name: Duisqy_death_3
       rect:
         serializedVersion: 2
         x: 135
@@ -174,14 +174,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 353d3eceea9292e4799d02e79689afae
-      internalID: 1597433923
+      spriteID: 8f193bd06b7e859438e31a3f6df6f125
+      internalID: -372127097
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Duisqy_fall_4
+      name: Duisqy_death_4
       rect:
         serializedVersion: 2
         x: 180
@@ -195,8 +195,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d7559f05b111e6340b94cbea77fc839b
-      internalID: -1493223147
+      spriteID: 4337e4d7a17d20f4b990b61e63f82c29
+      internalID: 773570223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Duisqy_death_5
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 0
+        width: 45
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 056306056735cd34ca173e0a24b25e37
+      internalID: 1661913304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Duisqy_death_6
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 0
+        width: 45
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1d41867b5b4ac24999c3528c2c12e13
+      internalID: -580543348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Duisqy_death_7
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 0
+        width: 45
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60cca0a0c19d3464d8c8d10cde4f1fea
+      internalID: -1874613994
       vertices: []
       indices: 
       edges: []
@@ -212,11 +275,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Duisqy_fall_0: 1557801223
-      Duisqy_fall_1: 613689214
-      Duisqy_fall_2: 866702938
-      Duisqy_fall_3: 1597433923
-      Duisqy_fall_4: -1493223147
+      Duisqy_death_0: -753436946
+      Duisqy_death_1: 1627587553
+      Duisqy_death_2: -401316748
+      Duisqy_death_3: -372127097
+      Duisqy_death_4: 773570223
+      Duisqy_death_5: 1661913304
+      Duisqy_death_6: -580543348
+      Duisqy_death_7: -1874613994
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

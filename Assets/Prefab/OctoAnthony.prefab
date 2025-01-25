@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 1644256429964413077}
   - component: {fileID: 3481065145125344562}
   - component: {fileID: 2146130747503810821}
-  - component: {fileID: 5579776134450273036}
+  - component: {fileID: 4948534784453219967}
   m_Layer: 0
   m_Name: OctoAnthony
   m_TagString: Untagged
@@ -204,7 +204,7 @@ CircleCollider2D:
   m_Offset: {x: 0.027692854, y: -0.093865275}
   serializedVersion: 2
   m_Radius: 0.40660995
---- !u!114 &5579776134450273036
+--- !u!114 &4948534784453219967
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -220,9 +220,9 @@ MonoBehaviour:
   _shootForce: 2
   _shootDirection: {x: 0, y: 0}
   _proyectilePrefab: {fileID: 7827263438873894847, guid: 03a2db2b15877104e9ab34fbfd984816, type: 3}
-  _shootPoint: {fileID: 2836111472338833723}
+  _shootPoint: {fileID: 0}
   _cadence: 1
-  _groundCheck: {fileID: 1606389055637906344}
+  _groundCheck: {fileID: 0}
   _groundLayer:
     serializedVersion: 2
     m_Bits: 64

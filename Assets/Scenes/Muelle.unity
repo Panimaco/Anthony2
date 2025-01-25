@@ -122,6 +122,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &32908498 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2836111472338833723, guid: d5fdfb5c9f9f8a64ba4ffd14eeac1406, type: 3}
+  m_PrefabInstance: {fileID: 1336960401}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &156432495
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,6 +195,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &348294345 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1606389055637906344, guid: d5fdfb5c9f9f8a64ba4ffd14eeac1406, type: 3}
+  m_PrefabInstance: {fileID: 1336960401}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &377211877
 GameObject:
   m_ObjectHideFlags: 0
@@ -830,6 +840,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4948534784453219967, guid: d5fdfb5c9f9f8a64ba4ffd14eeac1406, type: 3}
+      propertyPath: _shootPoint
+      value: 
+      objectReference: {fileID: 32908498}
+    - target: {fileID: 4948534784453219967, guid: d5fdfb5c9f9f8a64ba4ffd14eeac1406, type: 3}
+      propertyPath: _groundCheck
+      value: 
+      objectReference: {fileID: 348294345}
     - target: {fileID: 7574641805267465632, guid: d5fdfb5c9f9f8a64ba4ffd14eeac1406, type: 3}
       propertyPath: m_Name
       value: OctoAnthony

@@ -24,16 +24,21 @@ public class Proyectile : MonoBehaviour
         Destroy(gameObject, LifeTime);
     }
 
-    private void OnCollisionEnter2D(Collision2D infoCollision)
+    private void OnTriggerEnter2D(Collider2D infoCollision)
     {
         if (infoCollision.gameObject.CompareTag("Player"))
         {
             return;
         }
-        else
+        if (infoCollision.gameObject.CompareTag("Enemy"))
         {
             _anim.SetTrigger("Impact");
-            Destroy(gameObject, _timeToDestroy);
+            Destroy(this.gameObject, _timeToDestroy);
+        }
+        if (infoCollision.gameObject.CompareTag("Ground"))
+        {
+            _anim.SetTrigger("Impact");
+            Destroy(this.gameObject, _timeToDestroy);
         }
     }
 }

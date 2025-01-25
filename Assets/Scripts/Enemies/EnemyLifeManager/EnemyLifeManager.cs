@@ -32,13 +32,6 @@ public class EnemyLifeManager : MonoBehaviour
 
         
     }
-
-    void Update()
-    {
-        
-    }
-
-    
     public void LoseEnemyLife()
     {
         currentHealth--;

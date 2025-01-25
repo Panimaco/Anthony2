@@ -12,7 +12,12 @@ public class ColisionManager : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collision)
     {
         //Compara tag de Enemigo
+<<<<<<< Updated upstream
         if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("EnemyObstacle"))
+=======
+        if (collision.gameObject.CompareTag("Enemy") ||
+            collision.gameObject.CompareTag("EnemyBullet"))
+>>>>>>> Stashed changes
         {
             Debug.Log("Tan dado");
             healthManager.LoseHealth();

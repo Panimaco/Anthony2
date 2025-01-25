@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 4794207585100370304}
   - component: {fileID: 1193234307315157774}
   - component: {fileID: -6592620890326256219}
-  - component: {fileID: 655901198628856490}
   - component: {fileID: 4193504789358122286}
+  - component: {fileID: 655901198628856490}
   m_Layer: 0
   m_Name: Bubble
   m_TagString: Bubble
@@ -136,21 +136,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &655901198628856490
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7827263438873894847}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a054e5b925c39e49abc61f482dd6b14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 20
-  LifeTime: 2
-  Direction: {x: 0, y: 0}
 --- !u!58 &4193504789358122286
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -186,3 +171,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.109375
+--- !u!114 &655901198628856490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7827263438873894847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a054e5b925c39e49abc61f482dd6b14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 20
+  LifeTime: 2
+  Direction: {x: 0, y: 0}

@@ -21,18 +21,25 @@ public class FlyingEnemy : MonoBehaviour
     [SerializeField]
     private float _projectileSpeed = 5f;
 
+    [SerializeField]
+    private float _shootInterval = 2f;
+
     public Action OnDestroyed;
 
     private Transform _player;
     private bool _isMoving = false;
+
     public void Initialize(Transform player)
     {
         _player = player; // Asignamos el jugador como referencia.
     }
+
     public void Start()
     {
         StartNextMove();
+        StartCoroutine(ShootAtIntervals()); // Iniciar la corrutina de disparo
     }
+
     private void Update()
     {
         // Destruir si está fuera del rango permitido.
@@ -70,9 +77,6 @@ public class FlyingEnemy : MonoBehaviour
         // Finalizar movimiento.
         _isMoving = false;
 
-        // Disparar proyectil.
-        ShootProjectile();
-
         // Iniciar el siguiente movimiento.
         StartNextMove();
     }
@@ -89,6 +93,15 @@ public class FlyingEnemy : MonoBehaviour
 
         // Configurar la dirección y velocidad del proyectil.
         projectile.GetComponent<Rigidbody2D>().velocity = direction * _projectileSpeed;
+    }
+
+    private System.Collections.IEnumerator ShootAtIntervals()
+    {
+        while (true)
+        {
+            ShootProjectile();
+            yield return new WaitForSeconds(_shootInterval); // Esperar el intervalo de disparo
+        }
     }
 
     private void DestroyEnemy()

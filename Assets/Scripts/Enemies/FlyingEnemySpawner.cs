@@ -3,21 +3,21 @@ using UnityEngine;
 public class FlyingEnemySpawner : MonoBehaviour
 {
     [SerializeField]
-    private GameObject _flyingEnemyPrefab; // Prefab del enemigo volador.
+    private GameObject _flyingEnemyPrefab;
 
     [SerializeField]
-    private Transform[] _spawnPoints; // Puntos de spawn de los enemigos.
+    private Transform[] _spawnPoints;
 
     [SerializeField]
-    private Transform _player; // Referencia al jugador.
+    private Transform _player;
 
     [SerializeField]
-    private int _maxEnemies = 5; // Máxima cantidad de enemigos simultáneos.
+    private int _maxEnemies = 5;
 
     [SerializeField]
-    private float _spawnInterval = 3f; // Tiempo entre spawns.
+    private float _spawnInterval = 3f;
 
-    private int _currentEnemyCount = 0; // Conteo actual de enemigos en la escena.
+    private int _currentEnemyCount = 0;
 
     private void Start()
     {
@@ -77,7 +77,6 @@ public class FlyingEnemySpawner : MonoBehaviour
         // Incrementar el contador de enemigos.
         _currentEnemyCount++;
 
-        Debug.Log($"Enemigo volador spawneado en: {spawnPoint.position}");
     }
 
     private void HandleEnemyDestroyed()

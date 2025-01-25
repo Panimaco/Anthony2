@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PanelManager : Singleton<PanelManager>
 {
+    public List<PanelModel> Panels;
+
     private List<PanelInstanceModel> _panelInstanceModels = new List<PanelInstanceModel>();
 
     private ObjectPool _objectPool;

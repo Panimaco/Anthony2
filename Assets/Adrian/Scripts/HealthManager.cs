@@ -45,7 +45,8 @@ public class HealthManager : MonoBehaviour
             healthcount--;
             PlayerPrefs.SetInt("Salud", healthcount);
             PlayerPrefs.Save();
-
+            LoseLife();
+            //ResetScene();
         }
     }
 

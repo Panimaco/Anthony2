@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float _recoilForce = 10f;
     [SerializeField]
+    private float _shootForce = 5f; // Nueva variable para la fuerza de disparo
+    [SerializeField]
     private Vector2 _shootDirection;
     private Rigidbody2D _rb;
 
@@ -56,12 +58,15 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    
+
     IEnumerator Shoot()
     {
         if (!_canShoot) yield break; // Salimos si ya estamos disparando.
         _canShoot = false;
-
+        if (_shootDirection.x == 0 && _shootDirection.y == 0)
+        {
+            _shootDirection = new Vector2(1.0f, 0.0f);
+        }
         Vector2 recoilDirection = -_shootDirection.normalized;
 
         if (_isOnGround && (_shootDirection == Vector2.down || (_shootDirection.x != 0 && _shootDirection.y < 0)))
@@ -71,6 +76,7 @@ public class PlayerMovement : MonoBehaviour
 
         GameObject projectile = Instantiate(_proyectilePrefab, _shootPoint.position, Quaternion.identity);
         projectile.GetComponent<Proyectile>().Direction = _shootDirection;
+        projectile.GetComponent<Proyectile>().Speed = _shootForce; // Aplicar la fuerza de disparo
 
         yield return new WaitForSeconds(_cadence); // Tiempo de espera.
 
@@ -84,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void OnDrawGizmos()
     {
-        if(_groundCheck != null)
+        if (_groundCheck != null)
         {
             Gizmos.color = Color.red;
 

@@ -135,7 +135,8 @@ MonoBehaviour:
   _destroyDistance: 20
   _projectilePrefab: {fileID: 671247309831306268, guid: acf1c064bd88f1f4da495be08b8bb29f, type: 3}
   _shootPoint: {fileID: 246441958999716479}
-  _projectileSpeed: 5
+  _projectileSpeed: 8
+  _shootInterval: 4
 --- !u!1 &7856117868914885381
 GameObject:
   m_ObjectHideFlags: 0

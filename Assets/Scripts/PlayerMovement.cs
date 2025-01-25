@@ -1,15 +1,13 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    //Zona de Variables Globales
     [Header("Fuerzas")]
     [SerializeField]
     private float _recoilForce = 10f;
     [SerializeField]
-    private float _shootForce = 5f; // Nueva variable para la fuerza de disparo
+    private float _shootForce = 5f;
     [SerializeField]
     private Vector2 _shootDirection;
     private Rigidbody2D _rb;
@@ -22,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float _cadence;
 
-    [Header("Variables para Detection del Suelo")]
+    [Header("Detección de Suelo")]
     [SerializeField]
     private Transform _groundCheck;
     [SerializeField]
@@ -36,20 +34,19 @@ public class PlayerMovement : MonoBehaviour
 
     private Animator _anim;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
     }
-    // Update is called once per frame
-    void Update()
+
+    private void Update()
     {
         CheckGround();
-        ImputPlayer();
+        HandleInput();
     }
 
-    private void ImputPlayer()
+    private void HandleInput()
     {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
@@ -61,51 +58,84 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    IEnumerator Shoot()
+    private IEnumerator Shoot()
     {
-        if (!_canShoot) yield break; // Salimos si ya estamos disparando.
+        if (!_canShoot) yield break;
         _canShoot = false;
-        if (_shootDirection.x == 0 && _shootDirection.y == 0)
+
+        if (_shootDirection == Vector2.zero)
         {
-            _shootDirection = new Vector2(1.0f, 0.0f);
+            _shootDirection = Vector2.right; // Dirección predeterminada si no hay entrada.
         }
+
         Vector2 recoilDirection = -_shootDirection.normalized;
 
         if (_isOnGround && (_shootDirection == Vector2.down || (_shootDirection.x != 0 && _shootDirection.y < 0)))
         {
             _rb.AddForce(recoilDirection * _recoilForce, ForceMode2D.Impulse);
 
-            // Activar los triggers de animación según la dirección del disparo
-            //Si dispara hacia abajo
             if (_shootDirection == Vector2.down)
             {
-                _anim.SetTrigger("isJumping");
+                SetTrigger("isJumping");
             }
-            //Si dispara hacia abajo/izquierda
             else if (_shootDirection.x < 0 && _shootDirection.y < 0)
             {
-                _anim.SetTrigger("isJumpingToRight");
+                SetTrigger("isJumpingToRight");
             }
-            //Si dispara hacia abajo/derecha
             else if (_shootDirection.x > 0 && _shootDirection.y < 0)
             {
-                _anim.SetTrigger("isJumpingToLeft");
+                SetTrigger("isJumpingToLeft");
+            }
+        }
+        else
+        {
+            if (_shootDirection.x < 0 && _shootDirection.y == 0)
+            {
+                SetTrigger("isShootingPatras");
+            }
+            else if (_shootDirection.x > 0 && _shootDirection.y == 0)
+            {
+                SetTrigger("isShootingPalante");
+            }
+            else if (_shootDirection.x < 0 && _shootDirection.y > 0)
+            {
+                SetTrigger("isShootingPatrasArriba");
+            }
+            else if (_shootDirection.x > 0 && _shootDirection.y > 0)
+            {
+                SetTrigger("isShootingPalanteArriba");
+            }
+            else if (_shootDirection.x == 0 && _shootDirection.y > 0)
+            {
+                SetTrigger("isShootingArriba");
             }
         }
 
+        // Instanciar el proyectil.
         GameObject projectile = Instantiate(_proyectilePrefab, _shootPoint.position, Quaternion.identity);
         projectile.GetComponent<Proyectile>().Direction = _shootDirection;
-        projectile.GetComponent<Proyectile>().Speed = _shootForce; // Aplicar la fuerza de disparo
+        projectile.GetComponent<Proyectile>().Speed = _shootForce;
 
-        yield return new WaitForSeconds(_cadence); // Tiempo de espera.
-
-        _canShoot = true; // Permitir disparar de nuevo.
+        yield return new WaitForSeconds(_cadence);
+        _canShoot = true;
     }
 
     private void CheckGround()
     {
         _isOnGround = Physics2D.OverlapCircle(_groundCheck.position, _groundCheckRadius, _groundLayer);
         _anim.SetBool("isOnGround", _isOnGround);
+    }
+
+    private void SetTrigger(string triggerName)
+    {
+        _anim.ResetTrigger("isShootingPatras");
+        _anim.ResetTrigger("isShootingPalante");
+        _anim.ResetTrigger("isShootingPatrasArriba");
+        _anim.ResetTrigger("isShootingPalanteArriba");
+        _anim.ResetTrigger("isShootingArriba");
+
+        _anim.SetTrigger(triggerName);
+        Debug.Log($"Trigger activado: {triggerName}");
     }
 
     private void OnDrawGizmos()

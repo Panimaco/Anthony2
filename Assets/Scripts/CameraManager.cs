@@ -49,12 +49,12 @@ public class CameraManager : MonoBehaviour
         float smoothedX = Mathf.Lerp(transform.position.x, desiredX, _smoothSpeed);
 
         // Posición deseada: posición del jugador más el desplazamiento en Y.
-        float desiredY = _player.position.y + _xOffset;
+        float desiredY = _player.position.y + _yOffset;
 
         // Suavizamos el movimiento de la cámara hacia la posición deseada en Y.
         float smoothedY = Mathf.Lerp(transform.position.y, desiredY, _smoothSpeed);
 
-        // Actualizamos solo la posición X de la cámara.
+        // Actualizamos la posición de la cámara.
         transform.position = new Vector3(smoothedX, smoothedY, transform.position.z);
     }
 

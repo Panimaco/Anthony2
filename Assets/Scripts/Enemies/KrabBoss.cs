@@ -201,8 +201,17 @@ public class GiantCrabBoss : MonoBehaviour
         _currentHealth -= damage;
         if (_currentHealth <= 0)
         {
+            StopAllCoroutines();
             _currentHealth = 0;
             Debug.Log("El cangrejo ha muerto.");
+            Destroy(this.gameObject, 3f);
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Bubble"))
+        {
+            TakeDamage(1);
         }
     }
 }

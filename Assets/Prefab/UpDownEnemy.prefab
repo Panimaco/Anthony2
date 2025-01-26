@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3678395488710841119}
+  - component: {fileID: 3726620341486172415}
   - component: {fileID: 6366645028063945549}
-  - component: {fileID: 4694322574801243808}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Enemy
@@ -33,6 +33,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1657408100446253354}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &3726620341486172415
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1364966937616341332}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 01867787ffb103249b53fe57838760d1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!212 &6366645028063945549
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -73,9 +94,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 5
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0.065324545, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -85,23 +106,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4694322574801243808
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1364966937616341332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22b9aa81a53f4b144bd2e056b3337711, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _pointA: {fileID: 7066038033812216776}
-  _pointB: {fileID: 8866039312116540405}
-  _moveSpeed: 2
-  _waitTimeAtA: 1
-  _waitTimeAtB: 1
 --- !u!1 &3832472794640908765
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,6 +179,7 @@ GameObject:
   - component: {fileID: 1657408100446253354}
   - component: {fileID: 6811886960844134956}
   - component: {fileID: 8656972640443930201}
+  - component: {fileID: 7327560293720648318}
   m_Layer: 0
   m_Name: UpDownEnemy
   m_TagString: Enemy
@@ -232,8 +237,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.00000047683716}
-  m_Size: {x: 0.99999994, y: 1.9999999}
+  m_Offset: {x: -0.009498596, y: 0.021372557}
+  m_Size: {x: 0.7055397, y: 0.855412}
   m_Direction: 0
 --- !u!114 &8656972640443930201
 MonoBehaviour:
@@ -249,3 +254,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   maxHealth: 0
+--- !u!114 &7327560293720648318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8504705392602918438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22b9aa81a53f4b144bd2e056b3337711, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pointA: {fileID: 7066038033812216776}
+  _pointB: {fileID: 8866039312116540405}
+  _moveSpeed: 2.4
+  _waitTimeAtA: 0.6
+  _waitTimeAtB: 0.2

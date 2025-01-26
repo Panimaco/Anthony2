@@ -5,9 +5,9 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Fuerzas")]
     [SerializeField]
-    private float _recoilForce = 10f;
+    private float _maxRecoilForce = 6f; // Fuerza máxima de impulso
     [SerializeField]
-    private float _shootForce = 5f;
+    private float _shootForce = 5f; // Fuerza constante del proyectil
     [SerializeField]
     private Vector2 _shootDirection;
     private Rigidbody2D _rb;
@@ -32,6 +32,12 @@ public class PlayerMovement : MonoBehaviour
 
     private bool _canShoot = true;
 
+    [SerializeField, Range(0, 2)]
+    private float _chargeTime = 0f; // Tiempo de carga del disparo (mostrado en Inspector)
+
+    [SerializeField, Range(2, 6)]
+    private float _currentRecoilForce = 1f; // Fuerza de retroceso actual (mostrada en Inspector)
+
     private Animator _anim;
 
     private void Start()
@@ -52,7 +58,24 @@ public class PlayerMovement : MonoBehaviour
         float vertical = Input.GetAxis("Vertical");
         _shootDirection = new Vector2(Mathf.Round(horizontal), Mathf.Round(vertical)).normalized;
 
+        // Iniciar carga al presionar el botón
         if (Input.GetKeyDown(KeyCode.Z))
+        {
+            _chargeTime = 0f;
+        }
+
+        // Incrementar carga mientras el botón esté pulsado (máximo 4 segundos)
+        if (Input.GetKey(KeyCode.Z))
+        {
+            _chargeTime += Time.deltaTime;
+            _chargeTime = Mathf.Min(_chargeTime, 2f); // Limitar la carga a 4 segundos
+
+            // Calcular la fuerza actual de retroceso (entre 1 y _maxRecoilForce)
+            _currentRecoilForce = Mathf.Lerp(2f, _maxRecoilForce, _chargeTime / 2f);
+        }
+
+        // Disparar al soltar el botón
+        if (Input.GetKeyUp(KeyCode.Z))
         {
             StartCoroutine(Shoot());
         }
@@ -63,55 +86,23 @@ public class PlayerMovement : MonoBehaviour
         if (!_canShoot) yield break;
         _canShoot = false;
 
+        // Usar la fuerza de retroceso calculada
+        float recoilForce = _currentRecoilForce;
+
         if (_shootDirection == Vector2.zero)
         {
-            _shootDirection = Vector2.right; // Dirección predeterminada si no hay entrada.
+            _shootDirection = Vector2.right;
         }
 
         Vector2 recoilDirection = -_shootDirection.normalized;
 
+        // Propulsión solo si la dirección del disparo es abajo, abajo-izquierda o abajo-derecha
         if (_isOnGround && (_shootDirection == Vector2.down || (_shootDirection.x != 0 && _shootDirection.y < 0)))
         {
-            _rb.AddForce(recoilDirection * _recoilForce, ForceMode2D.Impulse);
-
-            if (_shootDirection == Vector2.down)
-            {
-                SetTrigger("isJumping");
-            }
-            else if (_shootDirection.x < 0 && _shootDirection.y < 0)
-            {
-                SetTrigger("isJumpingToRight");
-            }
-            else if (_shootDirection.x > 0 && _shootDirection.y < 0)
-            {
-                SetTrigger("isJumpingToLeft");
-            }
-        }
-        else
-        {
-            if (_shootDirection.x < 0 && _shootDirection.y == 0)
-            {
-                SetTrigger("isShootingPatras");
-            }
-            else if (_shootDirection.x > 0 && _shootDirection.y == 0)
-            {
-                SetTrigger("isShootingPalante");
-            }
-            else if (_shootDirection.x < 0 && _shootDirection.y > 0)
-            {
-                SetTrigger("isShootingPatrasArriba");
-            }
-            else if (_shootDirection.x > 0 && _shootDirection.y > 0)
-            {
-                SetTrigger("isShootingPalanteArriba");
-            }
-            else if (_shootDirection.x == 0 && _shootDirection.y > 0)
-            {
-                SetTrigger("isShootingArriba");
-            }
+            _rb.AddForce(recoilDirection * recoilForce, ForceMode2D.Impulse);
         }
 
-        // Instanciar el proyectil.
+        // Instanciar el proyectil
         GameObject projectile = Instantiate(_proyectilePrefab, _shootPoint.position, Quaternion.identity);
         projectile.GetComponent<Proyectile>().Direction = _shootDirection;
         projectile.GetComponent<Proyectile>().Speed = _shootForce;
@@ -124,18 +115,6 @@ public class PlayerMovement : MonoBehaviour
     {
         _isOnGround = Physics2D.OverlapCircle(_groundCheck.position, _groundCheckRadius, _groundLayer);
         _anim.SetBool("isOnGround", _isOnGround);
-    }
-
-    private void SetTrigger(string triggerName)
-    {
-        _anim.ResetTrigger("isShootingPatras");
-        _anim.ResetTrigger("isShootingPalante");
-        _anim.ResetTrigger("isShootingPatrasArriba");
-        _anim.ResetTrigger("isShootingPalanteArriba");
-        _anim.ResetTrigger("isShootingArriba");
-
-        _anim.SetTrigger(triggerName);
-        Debug.Log($"Trigger activado: {triggerName}");
     }
 
     private void OnDrawGizmos()

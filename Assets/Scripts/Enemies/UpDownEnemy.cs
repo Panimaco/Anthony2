@@ -1,37 +1,26 @@
 using UnityEngine;
+using System.Collections;
 
 public class UpDownEnemy : MonoBehaviour
 {
-    // Punto A (abajo) donde comienza el enemigo.
     [SerializeField]
-    private Transform _pointA;
-
-    // Punto B (arriba) donde el enemigo se detiene.
+    private Transform _pointA; // Punto A
     [SerializeField]
-    private Transform _pointB;
-
-    // Velocidad de movimiento del enemigo.
+    private Transform _pointB; // Punto B
     [SerializeField]
-    private float _moveSpeed = 2f;
-
-    // Tiempo que el enemigo espera en el punto A.
+    private float _moveSpeed = 2f; // Velocidad de movimiento
     [SerializeField]
-    private float _waitTimeAtA = 1f;
-
-    // Tiempo que el enemigo espera en el punto B.
+    private float _waitTimeAtA = 1f; // Tiempo de espera en A
     [SerializeField]
-    private float _waitTimeAtB = 1f;
+    private float _waitTimeAtB = 1f; // Tiempo de espera en B
 
-    // Variables internas para manejar el estado del movimiento.
-    private bool _movingUp = true;
-    private bool _isWaiting = false;
+    private bool _movingUp = true; // Dirección inicial
+    private bool _isWaiting = false; // Estado de espera
 
     private void Update()
     {
-        // Si está esperando, no se mueve.
         if (_isWaiting) return;
 
-        // Determinar hacia dónde moverse según el estado (_movingUp).
         if (_movingUp)
         {
             MoveTowardsPoint(_pointB.position, _waitTimeAtB);
@@ -44,24 +33,19 @@ public class UpDownEnemy : MonoBehaviour
 
     private void MoveTowardsPoint(Vector3 target, float waitTime)
     {
-        // Movimiento hacia el punto objetivo.
         transform.position = Vector3.MoveTowards(transform.position, target, _moveSpeed * Time.deltaTime);
 
-        // Si el enemigo ha alcanzado el punto objetivo.
-        if (Vector3.Distance(transform.position, target) <= 0.01f)
+        if (Vector3.Distance(transform.position, target) <= 0.1f)
         {
-            // Cambiar el estado de movimiento.
-            _movingUp = !_movingUp;
-
-            // Esperar en el punto alcanzado.
+            _movingUp = !_movingUp; // Cambiar dirección
             StartCoroutine(WaitAtPoint(waitTime));
         }
     }
 
-    private System.Collections.IEnumerator WaitAtPoint(float waitTime)
+    private IEnumerator WaitAtPoint(float waitTime)
     {
-        _isWaiting = true; // Detener el movimiento.
-        yield return new WaitForSeconds(waitTime); // Esperar el tiempo especificado.
-        _isWaiting = false; // Reanudar el movimiento.
+        _isWaiting = true;
+        yield return new WaitForSeconds(waitTime);
+        _isWaiting = false;
     }
 }

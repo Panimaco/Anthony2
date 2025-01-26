@@ -1,47 +1,59 @@
 using UnityEngine;
-using System;
 
-public class LinearEnemy : MonoBehaviour
+public class Goomba : MonoBehaviour
 {
-    // Velocidad del enemigo.
+    [Header("Movimiento")]
     [SerializeField]
-    private float _speed = 5f;
-
-    // Distancia máxima de la cámara antes de ser destruido.
+    private Transform _pointA; // Punto A
     [SerializeField]
-    private float _destroyDistance = 20f;
+    private Transform _pointB; // Punto B
+    [SerializeField]
+    private float _moveSpeed = 2f; // Velocidad de movimiento
 
-    // Evento para notificar al spawner cuando se destruye.
-    public Action OnDestroyed;
+    private Transform _currentTarget; // Objetivo actual
+    private bool _facingRight = true; // Dirección inicial del sprite
 
-    // Dirección del enemigo al moverse.
-    private Vector2 _moveDirection;
+    private void Start()
+    {
+        // Comenzar moviéndose hacia el punto A
+        _currentTarget = _pointA;
+    }
 
     private void Update()
     {
-        // Mover al enemigo en línea recta en la dirección inicial.
-        transform.position += (Vector3)_moveDirection * _speed * Time.deltaTime;
+        MoveTowardsTarget();
+    }
 
-        // Destruir si está fuera del rango permitido.
-        if (Mathf.Abs(transform.position.x) > _destroyDistance)
+    private void MoveTowardsTarget()
+    {
+        // Moverse hacia el objetivo actual
+        transform.position = Vector3.MoveTowards(transform.position, _currentTarget.position, _moveSpeed * Time.deltaTime);
+
+        // Verificar si hemos llegado al objetivo
+        if (Vector3.Distance(transform.position, _currentTarget.position) <= 0.1f)
         {
-            DestroyEnemy();
+            // Cambiar el objetivo al otro punto
+            _currentTarget = _currentTarget == _pointA ? _pointB : _pointA;
+            Flip();
         }
     }
 
-    // Inicializar la dirección hacia el jugador.
-    public void Initialize(Vector3 playerPosition)
+    private void Flip()
     {
-        // Calcular la dirección inicial hacia el jugador, solo en el eje X.
-        _moveDirection = new Vector2(Mathf.Sign(playerPosition.x - transform.position.x), 0f);
+        // Voltear el sprite cambiando la escala en X
+        _facingRight = !_facingRight;
+        Vector3 localScale = transform.localScale;
+        localScale.x *= -1;
+        transform.localScale = localScale;
     }
 
-    private void DestroyEnemy()
+    private void OnDrawGizmos()
     {
-        // Notificar al spawner que este enemigo ha sido destruido.
-        OnDestroyed?.Invoke();
-
-        // Destruir este objeto.
-        Destroy(gameObject);
+        // Dibujar líneas entre los puntos A y B para visualización
+        if (_pointA != null && _pointB != null)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawLine(_pointA.position, _pointB.position);
+        }
     }
 }

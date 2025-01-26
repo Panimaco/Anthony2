@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3678395488710841119}
   - component: {fileID: 3726620341486172415}
   - component: {fileID: 6366645028063945549}
+  - component: {fileID: 8832685147608311727}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Enemy
@@ -106,6 +107,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8832685147608311727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1364966937616341332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22b9aa81a53f4b144bd2e056b3337711, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pointA: {fileID: 7066038033812216776}
+  _pointB: {fileID: 8866039312116540405}
+  _moveSpeed: 2.4
+  _waitTimeAtA: 0.6
+  _waitTimeAtB: 0.2
+  _movingUp: 1
+  _isWaiting: 0
 --- !u!1 &3832472794640908765
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,7 +199,6 @@ GameObject:
   - component: {fileID: 1657408100446253354}
   - component: {fileID: 6811886960844134956}
   - component: {fileID: 8656972640443930201}
-  - component: {fileID: 7327560293720648318}
   m_Layer: 0
   m_Name: UpDownEnemy
   m_TagString: Enemy
@@ -254,20 +273,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   maxHealth: 0
---- !u!114 &7327560293720648318
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8504705392602918438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22b9aa81a53f4b144bd2e056b3337711, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _pointA: {fileID: 7066038033812216776}
-  _pointB: {fileID: 8866039312116540405}
-  _moveSpeed: 2.4
-  _waitTimeAtA: 0.6
-  _waitTimeAtB: 0.2

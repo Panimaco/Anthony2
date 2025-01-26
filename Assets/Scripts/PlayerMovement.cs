@@ -3,6 +3,15 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Audio")]
+    [SerializeField]
+    private AudioClip _damageClip;
+    [SerializeField]
+    private AudioClip _deathClip;
+    [SerializeField]
+    private AudioClip _jumpClip;
+    private AudioSource _audioSource;
+
     [Header("Fuerzas")]
     [SerializeField]
     private float _maxRecoilForce = 6f; // Fuerza máxima de impulso
@@ -42,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
         _rb = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
     }
@@ -51,7 +61,22 @@ public class PlayerMovement : MonoBehaviour
         CheckGround();
         HandleInput();
     }
-
+    public void PlayDeathSound()
+    {
+        _audioSource.PlayOneShot(_deathClip);
+    }
+    public void PlayDamageSound()
+    {
+        _audioSource.PlayOneShot(_damageClip);
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Water"))
+        {
+            PlayDamageSound();
+            this.gameObject.GetComponent<CheckpointManager>().TeleportToCheckPoint();
+        }
+    }
     private void HandleInput()
     {
         float horizontal = Input.GetAxis("Horizontal");
@@ -108,14 +133,17 @@ public class PlayerMovement : MonoBehaviour
 
             if (_shootDirection == Vector2.down)
             {
+                _audioSource.PlayOneShot(_jumpClip);
                 SetTrigger("isJumping");
             }
             else if (_shootDirection.x < 0 && _shootDirection.y < 0)
             {
+                _audioSource.PlayOneShot(_jumpClip);
                 SetTrigger("isJumpingToRight");
             }
             else if (_shootDirection.x > 0 && _shootDirection.y < 0)
             {
+                _audioSource.PlayOneShot(_jumpClip);
                 SetTrigger("isJumpingToLeft");
             }
         }

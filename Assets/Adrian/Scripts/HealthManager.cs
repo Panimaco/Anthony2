@@ -23,6 +23,9 @@ public class HealthManager : MonoBehaviour
     private GameObject _player;
     private Color _savedColor;
 
+    [SerializeField]
+    private CheckpointManager _checkpointManager;
+
     public TextMeshProUGUI lifeText;
 
 
@@ -63,6 +66,7 @@ public class HealthManager : MonoBehaviour
         //Perder salud con más de 1 punto de salud
         if (healthcount > 1)
         {
+            _checkpointManager.TeleportToCheckPoint();
             healthcount--;
             PlayerPrefs.SetInt("Salud", healthcount);
             PlayerPrefs.Save();
@@ -81,6 +85,7 @@ public class HealthManager : MonoBehaviour
 
     public void LoseLife()
     {
+
         life = PlayerPrefs.GetInt("Vidas");
         life--;
         PlayerPrefs.SetInt("Vidas", life);

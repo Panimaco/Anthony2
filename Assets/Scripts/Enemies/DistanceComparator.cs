@@ -8,22 +8,24 @@ public class DistanceComparator : MonoBehaviour
     private Transform _player;
     [SerializeField]
     private GiantCrabBoss _giantCrabBoss;
+
     private void Awake()
     {
-        _giantCrabBoss.gameObject.SetActive(false);
+        _giantCrabBoss.enabled = false;
     }
+
     void Update()
     {
-        if(transform.position.x - _player.position.x > 4)
+        if (transform.position.x - _player.position.x > 4)
         {
-            if (_giantCrabBoss.gameObject.activeSelf)
+            if (_giantCrabBoss.enabled)
             {
-                _giantCrabBoss.gameObject.SetActive(false);
+                _giantCrabBoss.enabled = false;
             }
         }
         else
         {
-            _giantCrabBoss.gameObject.SetActive(true);
+            _giantCrabBoss.enabled = true;
         }
     }
 }

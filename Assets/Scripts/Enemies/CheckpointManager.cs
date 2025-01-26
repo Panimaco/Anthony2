@@ -7,6 +7,8 @@ public class CheckpointManager : MonoBehaviour
     private Transform _actualCheckpoint;
 
     [SerializeField]
+    private Transform _player;
+    [SerializeField]
     private Transform _zero;
     [SerializeField]
     private Transform _firstCheckpoint;
@@ -17,39 +19,56 @@ public class CheckpointManager : MonoBehaviour
     [SerializeField]
     private Transform _fourthCheckpoint;
 
+    private void Awake()
+    {
+        _player = GameObject.FindWithTag("Player").transform;
+    }
     private void Update()
     {
         CheckPointChecker();
     }
+
     private void SetCheckpoint(Transform checkpoint)
     {
         _actualCheckpoint = checkpoint;
+        Debug.Log($"Checkpoint set to: {_actualCheckpoint.name}");
     }
-    private void CheckPointChecker() 
+
+    private void CheckPointChecker()
     {
-        if (transform.position.x < _firstCheckpoint.position.x)
+        if (_player.position.x < _firstCheckpoint.position.x)
         {
             SetCheckpoint(_zero);
         }
-        if (transform.position.x > _firstCheckpoint.position.x && transform.position.x < _secondCheckpoint.position.x)
+        else if (_player.position.x > _firstCheckpoint.position.x && _player.position.x < _secondCheckpoint.position.x)
         {
             SetCheckpoint(_firstCheckpoint);
         }
-        if (transform.position.x > _secondCheckpoint.position.x && transform.position.x < _thirdCheckpoint.position.x)
+        else if (_player.position.x > _secondCheckpoint.position.x && _player.position.x < _thirdCheckpoint.position.x)
         {
             SetCheckpoint(_secondCheckpoint);
         }
-        if (transform.position.x > _thirdCheckpoint.position.x && transform.position.x < _fourthCheckpoint.position.x)
+        else if (_player.position.x > _thirdCheckpoint.position.x && _player.position.x < _fourthCheckpoint.position.x)
         {
             SetCheckpoint(_thirdCheckpoint);
         }
-        if (transform.position.x > _fourthCheckpoint.position.x)
+        else if (_player.position.x > _fourthCheckpoint.position.x)
         {
             SetCheckpoint(_fourthCheckpoint);
         }
     }
+
     public void TeleportToCheckPoint()
     {
-        this.gameObject.transform.position = new Vector3(_actualCheckpoint.position.x, _actualCheckpoint.position.y, transform.position.z);
+        if (_actualCheckpoint != null)
+        {
+            _player.position = new Vector3(_actualCheckpoint.position.x, _actualCheckpoint.position.y, transform.position.z);
+            Debug.Log($"Teleported to: {_actualCheckpoint.name}");
+        }
+        else
+        {
+            Debug.LogWarning("No checkpoint set to teleport to.");
+        }
     }
-}                     
+}
+

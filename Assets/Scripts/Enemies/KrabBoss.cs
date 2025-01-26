@@ -1,7 +1,10 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GiantCrabBoss : MonoBehaviour
 {
+    [SerializeField]
+    private SceneControler sceneManager;
     [Header("Vida y Fases")]
     [SerializeField]
     private float _maxHealth = 20f;
@@ -205,6 +208,8 @@ public class GiantCrabBoss : MonoBehaviour
             _currentHealth = 0;
             Debug.Log("El cangrejo ha muerto.");
             Destroy(this.gameObject, 3f);
+            sceneManager.ChangeScene("EndCutScene");
+
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

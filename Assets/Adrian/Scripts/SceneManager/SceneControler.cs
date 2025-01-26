@@ -17,6 +17,7 @@ public class SceneControler : MonoBehaviour
         sceneName = name;
         //sceneIndex = po;
         SceneManager.LoadScene(name);
+        Time.timeScale = 1f;
         //StartCoroutine(LoadLevel());
     }
 

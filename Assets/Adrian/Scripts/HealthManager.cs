@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public class HealthManager : MonoBehaviour
 {
+    [SerializeField]
+    private PauseMenu gameOverMenu;
     /*[SerializeField]
     SceneManager sceneManager;*/
     //Array de sprites de la barra de salud
@@ -98,7 +100,7 @@ public class HealthManager : MonoBehaviour
         }
         else
         {
-            //GameOver()
+            gameOverMenu.GameOver();
             ResetRun();
         }
     }
@@ -108,6 +110,6 @@ public class HealthManager : MonoBehaviour
         PlayerPrefs.SetInt("Vidas", 3);
         PlayerPrefs.SetInt("Salud", 4);
         PlayerPrefs.Save();
-        //LoadSceneByIndex
+        
     }
 }

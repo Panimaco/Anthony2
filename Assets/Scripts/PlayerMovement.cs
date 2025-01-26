@@ -62,21 +62,23 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z))
         {
             _chargeTime = 0f;
+            _anim.SetBool("isCharging", true); // Activar animación de carga en bucle
         }
 
-        // Incrementar carga mientras el botón esté pulsado (máximo 4 segundos)
+        // Incrementar carga mientras el botón esté pulsado (máximo 2 segundos)
         if (Input.GetKey(KeyCode.Z))
         {
             _chargeTime += Time.deltaTime;
-            _chargeTime = Mathf.Min(_chargeTime, 2f); // Limitar la carga a 4 segundos
+            _chargeTime = Mathf.Min(_chargeTime, 2f); // Limitar la carga a 2 segundos
 
-            // Calcular la fuerza actual de retroceso (entre 1 y _maxRecoilForce)
+            // Calcular la fuerza actual de retroceso (entre 2 y _maxRecoilForce)
             _currentRecoilForce = Mathf.Lerp(2f, _maxRecoilForce, _chargeTime / 2f);
         }
 
         // Disparar al soltar el botón
         if (Input.GetKeyUp(KeyCode.Z))
         {
+            _anim.SetBool("isCharging", false); // Detener animación de carga
             StartCoroutine(Shoot());
         }
     }
@@ -96,10 +98,46 @@ public class PlayerMovement : MonoBehaviour
 
         Vector2 recoilDirection = -_shootDirection.normalized;
 
-        // Propulsión solo si la dirección del disparo es abajo, abajo-izquierda o abajo-derecha
+        // Animaciones según la dirección del disparo
         if (_isOnGround && (_shootDirection == Vector2.down || (_shootDirection.x != 0 && _shootDirection.y < 0)))
         {
             _rb.AddForce(recoilDirection * recoilForce, ForceMode2D.Impulse);
+
+            if (_shootDirection == Vector2.down)
+            {
+                SetTrigger("isJumping");
+            }
+            else if (_shootDirection.x < 0 && _shootDirection.y < 0)
+            {
+                SetTrigger("isJumpingToRight");
+            }
+            else if (_shootDirection.x > 0 && _shootDirection.y < 0)
+            {
+                SetTrigger("isJumpingToLeft");
+            }
+        }
+        else
+        {
+            if (_shootDirection.x < 0 && _shootDirection.y == 0)
+            {
+                SetTrigger("isShootingPatras");
+            }
+            else if (_shootDirection.x > 0 && _shootDirection.y == 0)
+            {
+                SetTrigger("isShootingPalante");
+            }
+            else if (_shootDirection.x < 0 && _shootDirection.y > 0)
+            {
+                SetTrigger("isShootingPatrasArriba");
+            }
+            else if (_shootDirection.x > 0 && _shootDirection.y > 0)
+            {
+                SetTrigger("isShootingPalanteArriba");
+            }
+            else if (_shootDirection.x == 0 && _shootDirection.y > 0)
+            {
+                SetTrigger("isShootingArriba");
+            }
         }
 
         // Instanciar el proyectil
@@ -115,6 +153,19 @@ public class PlayerMovement : MonoBehaviour
     {
         _isOnGround = Physics2D.OverlapCircle(_groundCheck.position, _groundCheckRadius, _groundLayer);
         _anim.SetBool("isOnGround", _isOnGround);
+    }
+
+    private void SetTrigger(string triggerName)
+    {
+        // Reiniciar triggers antes de activar uno nuevo
+        _anim.ResetTrigger("isShootingPatras");
+        _anim.ResetTrigger("isShootingPalante");
+        _anim.ResetTrigger("isShootingPatrasArriba");
+        _anim.ResetTrigger("isShootingPalanteArriba");
+        _anim.ResetTrigger("isShootingArriba");
+
+        _anim.SetTrigger(triggerName);
+        Debug.Log($"Trigger activado: {triggerName}");
     }
 
     private void OnDrawGizmos()

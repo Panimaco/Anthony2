@@ -62,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z))
         {
             _chargeTime = 0f;
-            _anim.SetBool("isCharging", true); // Activar animación de carga en bucle
+           
         }
 
         // Incrementar carga mientras el botón esté pulsado (máximo 2 segundos)
@@ -70,7 +70,10 @@ public class PlayerMovement : MonoBehaviour
         {
             _chargeTime += Time.deltaTime;
             _chargeTime = Mathf.Min(_chargeTime, 2f); // Limitar la carga a 2 segundos
-
+            if(_chargeTime >= 0.8f)
+            {
+                _anim.SetBool("isCharging", true); // Activar animación de carga en bucle
+            }
             // Calcular la fuerza actual de retroceso (entre 2 y _maxRecoilForce)
             _currentRecoilForce = Mathf.Lerp(2f, _maxRecoilForce, _chargeTime / 2f);
         }

@@ -20,7 +20,7 @@ public class HealthManager : MonoBehaviour
     int life;
 
     [SerializeField]
-    private SpriteRenderer _player;
+    private GameObject _player;
     private Color _savedColor;
 
     public TextMeshProUGUI lifeText;
@@ -29,7 +29,8 @@ public class HealthManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        _savedColor = _player.color;
+        Color recolor = _player.GetComponent<SpriteRenderer>().color;
+        _savedColor = recolor;
         //Numero de vidas y salud iniciales
         PlayerPrefs.SetInt("Vidas", 3);
         PlayerPrefs.SetInt("Salud", 4);
@@ -54,8 +55,9 @@ public class HealthManager : MonoBehaviour
     //Método de perder salud
     public void LoseHealth()
     {
-        _player.color = Color.red;
-        _player.color = _savedColor;
+        _player.GetComponent<AudioSource>().Play();
+        _player.GetComponent<SpriteRenderer>().color = Color.red;
+        _player.GetComponent<SpriteRenderer>().color = _savedColor;
         //Salud  actual
         healthcount = PlayerPrefs.GetInt("Salud");
         //Perder salud con más de 1 punto de salud

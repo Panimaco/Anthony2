@@ -9,12 +9,11 @@ public class EnemyLifeManager : MonoBehaviour
     public int currentHealth;
     public int maxHealth;
     public SpriteRenderer _sR;
-    public Color _savedColor;
+    private Color _savedColor;
 
     void Start()
     {
-        _sR = this.gameObject.GetComponent<SpriteRenderer>();
-        _savedColor = _sR.color;
+        _savedColor = this.gameObject.GetComponent<SpriteRenderer>().color;
         if (this.gameObject.name == "FlyingEnemy")
         {
             maxHealth = 1;
@@ -38,8 +37,8 @@ public class EnemyLifeManager : MonoBehaviour
     }
     public void LoseEnemyLife()
     {
-        _sR.color = Color.red;
-        _sR.color = _savedColor;
+        this.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+        this.gameObject.GetComponent<SpriteRenderer>().color = _savedColor;
         currentHealth--;
         Debug.Log("Se ha restado vida");
         if (currentHealth <= 0)

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e992f2a84e4065144a0772574d9adae2
+guid: 4d75fcb98c797934dab41a1f80180270
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: crab_0
+      name: crabLegs_0
       rect:
         serializedVersion: 2
-        x: 11
-        y: 7
-        width: 107
-        height: 94
+        x: 0
+        y: 0
+        width: 289
+        height: 205
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,8 +111,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f84e67c14da087e4985c87e7178ffea2
-      internalID: 731731915
+      spriteID: 5595135b8e9ec9245889a994783f76ef
+      internalID: -1991022617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crabLegs_1
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 0
+        width: 289
+        height: 205
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 538c171d47f1f6443ada42388fa868dc
+      internalID: -851107134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crabLegs_2
+      rect:
+        serializedVersion: 2
+        x: 578
+        y: 0
+        width: 289
+        height: 205
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bef955bba6841449bfb657ec56d0acd
+      internalID: -1122808743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crabLegs_3
+      rect:
+        serializedVersion: 2
+        x: 867
+        y: 0
+        width: 289
+        height: 205
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 258cbfd8b71fc9644b1c1427debe48a5
+      internalID: -1778156936
       vertices: []
       indices: 
       edges: []
@@ -128,7 +191,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      crab_0: 731731915
+      crabLegs_0: -1991022617
+      crabLegs_1: -851107134
+      crabLegs_2: -1122808743
+      crabLegs_3: -1778156936
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

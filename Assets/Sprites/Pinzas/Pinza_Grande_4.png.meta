@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: deab281bed258ab459cd309166d76fff
+guid: 5290f12334268ae49b528c063d3d7f61
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Pinza Grande 1_0
+      name: Pinza_Grande_4_0
       rect:
         serializedVersion: 2
         x: 0
@@ -111,8 +111,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5b3e20b8b2dc03f4aa224ee64b882f15
-      internalID: -492002132
+      spriteID: 021caf28e77ded2478bdf2ab4801471a
+      internalID: 2036103625
       vertices: []
       indices: 
       edges: []
@@ -128,7 +128,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Pinza Grande 1_0: -492002132
+      Pinza_Grande_4_0: 2036103625
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

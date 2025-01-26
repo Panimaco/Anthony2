@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,6 +18,11 @@ public class SceneControler : MonoBehaviour
         //sceneIndex = po;
         SceneManager.LoadScene(name);
         //StartCoroutine(LoadLevel());
+    }
+
+    public void QuitButton()
+    {
+        Application.Quit();
     }
 
     /*IEnumerator LoadLevel()

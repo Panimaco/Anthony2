@@ -66,7 +66,7 @@ public class HealthManager : MonoBehaviour
         //Perder salud con más de 1 punto de salud
         if (healthcount > 1)
         {
-            _checkpointManager.TeleportToCheckPoint();
+            
             healthcount--;
             PlayerPrefs.SetInt("Salud", healthcount);
             PlayerPrefs.Save();
@@ -94,6 +94,7 @@ public class HealthManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("Salud", 4);
             PlayerPrefs.Save();
+            _checkpointManager.TeleportToCheckPoint();
         }
         else
         {

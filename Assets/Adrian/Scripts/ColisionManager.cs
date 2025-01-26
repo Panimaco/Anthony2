@@ -8,6 +8,9 @@ public class ColisionManager : MonoBehaviour
     //Manager de salud y vida
     HealthManager healthManager;
 
+    [SerializeField]
+    CheckpointManager _checkpointManager;
+
     //Función de colisión con enemigos
     public void OnTriggerEnter2D(Collider2D collision)
     {
@@ -18,6 +21,14 @@ public class ColisionManager : MonoBehaviour
         {
             Debug.Log("Tan dado");
             healthManager.LoseHealth();
+        }
+
+        if (collision.gameObject.CompareTag("Water"))
+        {
+            Debug.Log("Agua");
+            healthManager.LoseHealth();
+            _checkpointManager.TeleportToCheckPoint();
+            Debug.Log("Teleport");
         }
     }
 }

@@ -7,6 +7,8 @@ public class CheckpointManager : MonoBehaviour
     private Transform _actualCheckpoint;
 
     [SerializeField]
+    private Transform _zero;
+    [SerializeField]
     private Transform _firstCheckpoint;
     [SerializeField]
     private Transform _secondCheckpoint;
@@ -27,7 +29,7 @@ public class CheckpointManager : MonoBehaviour
     {
         if (transform.position.x < _firstCheckpoint.position.x)
         {
-            return;
+            SetCheckpoint(_zero);
         }
         if (transform.position.x > _firstCheckpoint.position.x && transform.position.x < _secondCheckpoint.position.x)
         {
@@ -48,6 +50,6 @@ public class CheckpointManager : MonoBehaviour
     }
     public void TeleportToCheckPoint()
     {
-        transform.position = new Vector3(_actualCheckpoint.position.x, _actualCheckpoint.position.y, transform.position.z);
+        this.gameObject.transform.position = new Vector3(_actualCheckpoint.position.x, _actualCheckpoint.position.y, transform.position.z);
     }
-}
+}                     

@@ -12,10 +12,7 @@ public class ColisionManager : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collision)
     {
         //Compara tag de Enemigo
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
         if (collision.gameObject.CompareTag("Enemy") ||
             collision.gameObject.CompareTag("EnemyBullet"))
         {

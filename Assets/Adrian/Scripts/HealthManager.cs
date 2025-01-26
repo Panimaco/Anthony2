@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -18,6 +19,9 @@ public class HealthManager : MonoBehaviour
     //Numero de vida actual
     int life;
 
+    public TextMeshProUGUI lifeText;
+
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -31,12 +35,15 @@ public class HealthManager : MonoBehaviour
         //Numero de vidas y salud al iniciar la escena
         healthcount = PlayerPrefs.GetInt("Salud");
         life = PlayerPrefs.GetInt("Vidas");
+        lifeText.text = life.ToString();
     }
     // Update is called once per frame
     void Update()
     {
         //Sprite actual de la barra de salud
         healthBar.sprite = health[PlayerPrefs.GetInt("Salud")];
+        life = PlayerPrefs.GetInt("Vidas");
+        lifeText.text = life.ToString();
     }
 
     //Método de perder salud

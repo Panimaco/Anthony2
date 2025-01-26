@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PanelInstanceModel : MonoBehaviour
+public class PanelInstanceModel
 {
     public string PanelId;
 
